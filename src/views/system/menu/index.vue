@@ -374,8 +374,8 @@ export default {
         orderNum: undefined,
         isFrame: "1",
         isCache: "0",
-        visible: "0",
-        status: "0"
+        visible: "1",
+        status: "1"
       };
       this.resetForm("form");
     },

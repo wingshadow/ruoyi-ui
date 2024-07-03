@@ -257,7 +257,7 @@ export default {
         leader: undefined,
         phone: undefined,
         email: undefined,
-        status: "0"
+        status: "1"
       };
       this.resetForm("form");
     },

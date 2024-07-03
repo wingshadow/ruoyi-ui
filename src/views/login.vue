@@ -2,9 +2,9 @@
   <div class="login">
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form">
       <h3 class="title">RuoYi-Flowable-Plus后台管理系统</h3>
-      <el-form-item prop="username">
+      <el-form-item prop="userAccount">
         <el-input
-          v-model="loginForm.username"
+          v-model="loginForm.userAccount"
           type="text"
           auto-complete="off"
           placeholder="账号"
@@ -72,14 +72,14 @@ export default {
     return {
       codeUrl: "",
       loginForm: {
-        username: "admin",
-        password: "admin123",
+        userAccount: "admin",
+        password: "123456",
         rememberMe: false,
         code: "",
         uuid: ""
       },
       loginRules: {
-        username: [
+        userAccount: [
           { required: true, trigger: "blur", message: "请输入您的账号" }
         ],
         password: [
@@ -118,11 +118,11 @@ export default {
       });
     },
     getCookie() {
-      const username = Cookies.get("username");
+      const userAccount = Cookies.get("userAccount");
       const password = Cookies.get("password");
       const rememberMe = Cookies.get('rememberMe')
       this.loginForm = {
-        username: username === undefined ? this.loginForm.username : username,
+        userAccount: userAccount === undefined ? this.loginForm.userAccount : userAccount,
         password: password === undefined ? this.loginForm.password : decrypt(password),
         rememberMe: rememberMe === undefined ? false : Boolean(rememberMe)
       };
@@ -132,11 +132,11 @@ export default {
         if (valid) {
           this.loading = true;
           if (this.loginForm.rememberMe) {
-            Cookies.set("username", this.loginForm.username, { expires: 30 });
+            Cookies.set("userAccount", this.loginForm.userAccount, { expires: 30 });
             Cookies.set("password", encrypt(this.loginForm.password), { expires: 30 });
             Cookies.set('rememberMe', this.loginForm.rememberMe, { expires: 30 });
           } else {
-            Cookies.remove("username");
+            Cookies.remove("userAccount");
             Cookies.remove("password");
             Cookies.remove('rememberMe');
           }
